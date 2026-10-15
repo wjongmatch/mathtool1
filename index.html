@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>數學分數3D教具產生器｜六龜高中</title>
 <style>
-:root{font-family:system-ui,"Microsoft JhengHei",sans-serif;color-scheme:dark;background:#101827;color:#eaf0fa}*{box-sizing:border-box}body{margin:0}header{padding:20px 26px;background:#172338;border-bottom:1px solid #30415a}h1{font-size:23px;margin:0 0 5px}header p{margin:0;color:#a6b9d2;font-size:14px}.layout{display:grid;grid-template-columns:330px minmax(0,1fr);gap:18px;padding:18px;max-width:1440px;margin:auto}.panel,.viewer{background:#182338;border:1px solid #32415b;border-radius:15px;padding:18px}.panel{display:flex;flex-direction:column;gap:12px}.field{display:grid;gap:6px}[hidden]{display:none!important}.field label{font-size:13px;color:#bcd0e7}input,select,textarea{width:100%;background:#0e1727;color:#f3f8ff;border:1px solid #415574;border-radius:9px;padding:10px;font-size:15px}input[type=range]{padding:0;accent-color:#55bcf2}.twocol{display:grid;grid-template-columns:1fr 1fr;gap:12px}.muted{font-size:12px;color:#9fb1c9;line-height:1.55}.actions{display:flex;gap:9px;flex-wrap:wrap}button{cursor:pointer;border:0;background:#2d668a;color:#fff;border-radius:9px;padding:12px 14px;font-size:14px;font-weight:700}button.primary{background:#16a3b3;flex:1}button:hover{filter:brightness(1.13)}button:disabled{opacity:.5;cursor:wait}.viewer{display:flex;flex-direction:column;min-height:560px}#scene{height:min(68vh,680px);min-height:380px;position:relative;border-radius:10px;overflow:hidden;background:linear-gradient(145deg,#111e31,#24324a)}#scene canvas{display:block;width:100%;height:100%}.viewer-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}.viewer-top h2{font-size:17px;margin:0}#status{font-size:13px;color:#8de2be}.foot{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px}.pill{font-size:12px;color:#c1d3ed}.guide{font-size:12px;color:#9eafc5}#error{color:#ffb2b2;font-size:13px;white-space:pre-wrap}#fractionView{display:flex;align-items:center;justify-content:center;min-height:54px;color:#e8faff;font-size:21px;font-weight:700}.fraction{display:inline-flex;flex-direction:column;text-align:center;align-items:stretch;line-height:1.15;min-width:1.4em}.fraction .numerator{border-bottom:2px solid currentColor;padding:0 5px 3px}.fraction .denominator{padding:3px 5px 0}#maskCanvas{display:none}@media(max-width:850px){.layout{grid-template-columns:1fr;padding:11px}.viewer{min-height:440px}#scene{min-height:340px;height:50vh}header{padding:16px}}
+:root{font-family:system-ui,"Microsoft JhengHei",sans-serif;color-scheme:dark;background:#101827;color:#eaf0fa}*{box-sizing:border-box}body{margin:0}header{padding:20px 26px;background:#172338;border-bottom:1px solid #30415a}h1{font-size:23px;margin:0 0 5px}header p{margin:0;color:#a6b9d2;font-size:14px}.layout{display:grid;grid-template-columns:330px minmax(0,1fr);gap:18px;padding:18px;max-width:1440px;margin:auto}.panel,.viewer{background:#182338;border:1px solid #32415b;border-radius:15px;padding:18px}.panel{display:flex;flex-direction:column;gap:12px}.field{display:grid;gap:6px}[hidden]{display:none!important}.field label{font-size:13px;color:#bcd0e7}input,select,textarea{width:100%;background:#0e1727;color:#f3f8ff;border:1px solid #415574;border-radius:9px;padding:10px;font-size:15px}input[type=range]{padding:0;accent-color:#55bcf2}.twocol{display:grid;grid-template-columns:1fr 1fr;gap:12px}.muted{font-size:12px;color:#9fb1c9;line-height:1.55}.actions{display:flex;gap:9px;flex-wrap:wrap}button{cursor:pointer;border:0;background:#2d668a;color:#fff;border-radius:9px;padding:12px 14px;font-size:14px;font-weight:700}button.primary{background:#16a3b3;flex:1}button:hover{filter:brightness(1.13)}button:disabled{opacity:.5;cursor:wait}.viewer{display:flex;flex-direction:column;min-height:560px}#scene{height:min(68vh,680px);min-height:380px;position:relative;border-radius:10px;overflow:hidden;background:linear-gradient(145deg,#111e31,#24324a)}#scene canvas{display:block;width:100%;height:100%}.viewer-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}.viewer-top h2{font-size:17px;margin:0}#status{font-size:13px;color:#8de2be}.foot{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px}.pill{font-size:12px;color:#c1d3ed}.guide{font-size:12px;color:#9eafc5}#error{color:#ffb2b2;font-size:13px;white-space:pre-wrap}#fractionView{display:flex;align-items:center;justify-content:center;min-height:54px;color:#e8faff;font-size:21px;font-weight:700}.fraction{display:inline-flex;flex-direction:column;text-align:center;align-items:stretch;line-height:1.15;min-width:1.4em}.fraction .numerator{border-bottom:2px solid currentColor;padding:0 5px 3px}.fraction .denominator{padding:3px 5px 0}.fraction-inputs{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px}.fraction-slash{font-size:22px;font-weight:800;color:#b8e6ff;text-align:center}.fraction-inputs input{text-align:center}#maskCanvas{display:none}@media(max-width:850px){.layout{grid-template-columns:1fr;padding:11px}.viewer{min-height:440px}#scene{min-height:340px;height:50vh}header{padding:16px}}
 
 /* UI refresh */
 :root{font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;background:#0c1220;color:#eaf1ff}
@@ -25,7 +25,7 @@ header{max-width:none;padding:18px max(22px,calc((100vw - 1490px)/2));display:fl
   <div class="twocol"><div class="field"><label for="width">寬度 / 直徑（mm）</label><input id="width" type="number" min="10" max="400" value="90"></div><div class="field"><label for="height">高度（mm）</label><input id="height" type="number" min="10" max="400" value="90"></div></div>
   <div class="field"><label for="thickness">板厚（mm）</label><input id="thickness" type="number" min="1" max="50" step="0.5" value="5"></div>
   <div class="section-label control-section">02 / 文字與分割</div><div class="field"><label for="words">要凹刻的文字（可換行）</label><textarea id="words" rows="3">六龜高中</textarea></div>
-  <div class="twocol"><div class="field"><label for="ratio">立體模型保留份數</label><select id="ratio" aria-label="立體模型保留幾分之幾"></select><div id="fractionView" aria-live="polite"></div><div class="muted">從上方看，由 12 點鐘方向開始，順時針連續保留所選的扇形區域；未保留的部分不會輸出 STL。</div></div><div class="field"><div class="range-head"><label for="depth">凹刻深度</label><output id="depthValue" class="range-value" for="depth">1.2 mm</output></div><input id="depth" type="range" min="0.2" max="4" step="0.1" value="1.2"><div class="range-minmax"><span>淺刻 0.2 mm</span><span>深刻 4.0 mm</span></div></div></div>
+  <div class="twocol"><div class="field"><label id="ratioLabel" for="ratio">立體模型保留份數</label><select id="ratio" aria-label="立體模型保留幾分之幾"></select><div id="circleFractionInputs" class="fraction-inputs" hidden><input id="circleNumerator" type="number" min="1" step="1" value="1" aria-label="圓形保留分子"><div class="fraction-slash">/</div><input id="circleDenominator" type="number" min="2" step="1" value="2" aria-label="圓形保留分母"></div><div id="fractionView" aria-live="polite"></div><div class="muted">從上方看，由 12 點鐘方向開始，順時針連續保留所選的扇形區域；圓形可自行輸入幾分之幾，多邊形則依邊數等分；未保留的部分不會輸出 STL。</div></div><div class="field"><div class="range-head"><label for="depth">凹刻深度</label><output id="depthValue" class="range-value" for="depth">1.2 mm</output></div><input id="depth" type="range" min="0.2" max="4" step="0.1" value="1.2"><div class="range-minmax"><span>淺刻 0.2 mm</span><span>深刻 4.0 mm</span></div></div></div>
   <div class="field"><div class="range-head"><label for="textSize">文字大小</label><output id="textSizeValue" class="range-value" for="textSize">70%</output></div><input id="textSize" type="range" min="20" max="100" step="5" value="70"><div class="range-minmax"><span>小 20%</span><span>最大 100%</span></div><div class="muted">相對於保留模型中可容納的最大字級；文字會自動避開邊緣。</div></div>
   <div class="field"><label for="font">文字字體（取決於裝置是否有安裝）</label><select id="font"><option value="'Microsoft JhengHei','Noto Sans TC',sans-serif">繁體中文黑體</option><option value="'PMingLiU','Noto Serif TC',serif">明體</option><option value="Arial,sans-serif">Arial</option><option value="monospace">等寬字體</option></select></div>
   <div class="section-label control-section">03 / 預覽與匯出</div><div class="field"><label for="quality">模型精細度：<span id="qualityValue">200</span> 格</label><input type="range" id="quality" min="100" max="350" step="25" value="200"><div class="muted">模型邊緣與刻字依像素取樣建模。越精細越平滑，但 STL 檔案更大，生成時間也較長。</div></div>
@@ -39,7 +39,7 @@ header{max-width:none;padding:18px max(22px,calc((100vw - 1490px)/2));display:fl
 <script type="module">
 import * as THREE from 'three';
 import {OrbitControls} from 'https://cdn.jsdelivr.net/npm/three@0.164.1/examples/jsm/controls/OrbitControls.js';
-const $=id=>document.getElementById(id), els=['shape','sides','width','height','thickness','words','ratio','depth','textSize','font','quality'];
+const $=id=>document.getElementById(id), els=['shape','sides','width','height','thickness','words','ratio','circleNumerator','circleDenominator','depth','textSize','font','quality'];
 const scene=new THREE.Scene();scene.background=new THREE.Color(0x162339);
 const camera=new THREE.PerspectiveCamera(40,1,.1,3000); camera.position.set(130,-190,140);
 const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.outputColorSpace=THREE.SRGBColorSpace;
@@ -53,25 +53,48 @@ function resize(){const el=$('scene');const w=el.clientWidth,h=el.clientHeight;r
 new ResizeObserver(resize).observe($('scene')); resize();
 function animate(){requestAnimationFrame(animate);controls.update();renderer.render(scene,camera)}animate();
 function val(id){return Number($(id).value)}
+function getFractionState(){
+ const circle=$('shape').value==='circle';
+ if(circle){
+  let denominator=Math.max(2,Math.min(360,Math.round(val('circleDenominator')||2)));
+  let numerator=Math.max(1,Math.round(val('circleNumerator')||1));
+  if(numerator>denominator) numerator=denominator;
+  $('circleNumerator').value=String(numerator);
+  $('circleDenominator').value=String(denominator);
+  return {circle,numerator,denominator,ratio:numerator/denominator};
+ }
+ const denominator=Math.min(12,Math.max(3,Math.round(val('sides')||6)));
+ const rawRatio=Number($('ratio').value||0);
+ const numerator=Math.max(1,Math.min(denominator,Math.round(rawRatio*denominator)||1));
+ return {circle,numerator,denominator,ratio:numerator/denominator};
+}
 function showFraction(){
- const denominator=$('shape').value==='circle'?12:Math.min(12,Math.max(3,Math.round(val('sides')||6)));
- const numerator=Math.max(1,Math.min(denominator,Math.round(val('ratio')*denominator)||1));
+ const {numerator,denominator}=getFractionState();
  $('fractionView').innerHTML=`<span class="fraction"><span class="numerator">${numerator}</span><span class="denominator">${denominator}</span></span>`;
 }
 function updateRatio(){
- const circle=$('shape').value==='circle',n=circle?12:Math.min(12,Math.max(3,Math.round(val('sides')||6)));
- const prev=$('ratio').value;const old=prev?Number(prev):1;
+ const circle=$('shape').value==='circle';
  $('sidesRow').hidden=circle;
+ $('ratio').hidden=circle;
+ $('circleFractionInputs').hidden=!circle;
+ if(circle){
+  $('ratioLabel').textContent='圓形保留份數（自訂幾分之幾）';
+  showFraction();
+  return;
+ }
+ const n=Math.min(12,Math.max(3,Math.round(val('sides')||6)));
+ const prev=$('ratio').value;const old=prev?Number(prev):1;
  $('ratio').innerHTML='';
  for(let i=1;i<=n;i++){
   const option=document.createElement('option');option.value=String(i/n);
   option.textContent=`保留 ${i} / ${n}`;$('ratio').appendChild(option);
  }
  $('ratio').selectedIndex=Math.max(0,Math.min(n-1,Math.round(old*n)-1));
- $('ratio').previousElementSibling.textContent=`立體模型保留份數（${n} 等分）`;showFraction();
+ $('ratioLabel').textContent=`立體模型保留份數（${n} 等分）`;
+ showFraction();
 }
 function polygonContains(x,y,vertices){let inside=false;for(let i=0,j=vertices.length-1;i<vertices.length;j=i++) {let a=vertices[i],b=vertices[j];if((a[1]>y)!=(b[1]>y)&&x<(b[0]-a[0])*(y-a[1])/(b[1]-a[1])+a[0])inside=!inside}return inside}
-function readSettings(){let W=val('width'),H=val('height'),T=val('thickness'),D=val('depth'),s=Math.round(val('sides')),N=val('quality'),textSize=val('textSize'),circle=$('shape').value==='circle';if(![W,H,T,D,N].every(Number.isFinite)||W<10||W>400||H<10||H>400||T<1||T>50||D<=0||D>=T)throw Error('請確認尺寸範圍，並確保凹刻深度大於 0 且小於板厚。');if(!circle&&(s<3||s>12))throw Error('多邊形邊數需介於 3 到 12。');return {W,H,T,D,s,N,textSize,circle,words:$('words').value,font:$('font').value,ratio:val('ratio')}}
+function readSettings(){let W=val('width'),H=val('height'),T=val('thickness'),D=val('depth'),s=Math.round(val('sides')),N=val('quality'),textSize=val('textSize'),circle=$('shape').value==='circle';if(![W,H,T,D,N].every(Number.isFinite)||W<10||W>400||H<10||H>400||T<1||T>50||D<=0||D>=T)throw Error('請確認尺寸範圍，並確保凹刻深度大於 0 且小於板厚。');if(!circle&&(s<3||s>12))throw Error('多邊形邊數需介於 3 到 12。');const fraction=getFractionState();return {W,H,T,D,s,N,textSize,circle,words:$('words').value,font:$('font').value,ratio:fraction.ratio,sectorKeep:fraction.numerator,sectorCount:fraction.denominator}}
 function textMask(p,nx,ny,solid){
  const canvas=$('maskCanvas');canvas.width=nx;canvas.height=ny;
  const ctx=canvas.getContext('2d',{willReadFrequently:true});
@@ -114,8 +137,8 @@ if(!p.circle){verts=[];for(let i=0;i<p.s;i++){const a=-Math.PI/2+i*2*Math.PI/p.s
 for(let j=0;j<ny;j++)for(let i=0;i<nx;i++){let x=(i+.5)*dx-p.W/2,y=(j+.5)*dy-p.H/2,k=j*nx+i;let within=p.circle?Math.pow(2*x/p.W,2)+Math.pow(2*y/p.H,2)<=1:polygonContains(x,y,verts);
 // Cut the actual 3D body into equal angular sectors, measured clockwise from 12 o'clock.
 // The cut is applied to both the preview mesh and the exported STL triangles.
-const sectorCount=p.circle?12:p.s;
-const sectorKeep=Math.max(1,Math.min(sectorCount,Math.round(p.ratio*sectorCount)));
+const sectorCount=p.sectorCount;
+const sectorKeep=p.sectorKeep;
 if(sectorKeep<sectorCount){
  const clockwise=(Math.atan2(x/p.W,y/p.H)+Math.PI*2)%(Math.PI*2);
  within=within && (clockwise <= sectorKeep*2*Math.PI/sectorCount+1e-8 || Math.abs(x)+Math.abs(y)<1e-7);
@@ -158,7 +181,7 @@ async function build(){
         mesh=new THREE.Mesh(geometry,new THREE.MeshStandardMaterial({color:0x63d1df,metalness:.12,roughness:.58,side:THREE.DoubleSide}));scene.add(mesh);
         triangles=result.positions;dirty=false;
         const longest=Math.max(p.W,p.H);controls.target.set(0,0,p.T*.45);camera.position.set(longest*.95,-longest*1.65,longest*1.18);camera.near=.1;camera.far=Math.max(3000,longest*30);camera.updateProjectionMatrix();controls.update();
-        $('status').textContent='模型已自動更新';$('info').textContent=`${p.W} × ${p.H} × ${p.T} mm　｜　保留 ${Math.round(p.ratio*(p.circle?12:p.s))}/${p.circle?12:p.s}　｜　${result.faces.toLocaleString()} 三角面`;
+        $('status').textContent='模型已自動更新';$('info').textContent=`${p.W} × ${p.H} × ${p.T} mm　｜　保留 ${p.sectorKeep}/${p.sectorCount}　｜　${result.faces.toLocaleString()} 三角面`;
       }catch(err){triangles=null;dirty=true;$('error').textContent=err.message;$('status').textContent='請修正設定';break}
     }while(dirty);
   })();
@@ -173,7 +196,7 @@ $('export').addEventListener('click',async()=>{
 });
 for(const id of els){$(id).addEventListener('input',()=>{
   if(id==='shape'||id==='sides')updateRatio();
-  if(id==='ratio')showFraction();
+  if(id==='ratio'||id==='circleNumerator'||id==='circleDenominator')showFraction();
   if(id==='quality')$('qualityValue').textContent=$('quality').value;
   if(id==='textSize')$('textSizeValue').textContent=$('textSize').value+'%';
   if(id==='depth')$('depthValue').textContent=Number($('depth').value).toFixed(1)+' mm';
